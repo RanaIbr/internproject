@@ -170,8 +170,8 @@ class MainWindow3D(tk.Toplevel):
         # button_import = Button(top_frame, text="Import Report", width=25, command=self.ImportReport, height=2)
         # button_import.pack(side="top", padx=10, pady=5)
 
-        button_import = Button(top_frame, text="Upload To Server", width=25, command=self.upload_to_server, height=2)
-        button_import.pack(side="top", padx=10, pady=5)
+        # button_import = Button(top_frame, text="Upload To Server", width=25, command=self.upload_to_server, height=2)
+        # button_import.pack(side="top", padx=10, pady=5)
 
         button_exit = Button(top_frame, text="Exit", command=self.destroy, width=25, height=2)
         button_exit.pack(side="top", padx=10, pady=5)
