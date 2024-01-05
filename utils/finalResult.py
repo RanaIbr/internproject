@@ -1,5 +1,5 @@
 import os
-#from pyhtml2pdf import converter
+from pyhtml2pdf import converter
 from html import escape
 import aspose.threed as a3d
 
@@ -8,10 +8,10 @@ def ImportReportExtra():
     filename = "data.txt"  # Replace with the actual file name
 
     data = {}  # Dictionary to store the extracted values
-    scene = a3d.Scene.from_file("Clean body.ply")
-    scene.save("output_3d_object_for_stl.obj")
+    scene = a3d.Scene.from_file("resources/3d_models/cleanBody.ply")
+    scene.save("resources/3d_models/output_3d_object_for_stl.obj")
 
-    scene = a3d.Scene.from_file("output_3d_object_for_stl.obj")
+    scene = a3d.Scene.from_file("resources/3d_models/output_3d_object_for_stl.obj")
     scene.save("CleanStl.stl")
     # Open the file in read mode
     with open(filename, "r") as file:
@@ -34,13 +34,13 @@ def ImportReportExtra():
     dimension = data.get("dimension")
     # Read text from Frontdistances.txt
 
-    distance_file_path = "Frontdistances.txt"
+    distance_file_path = "outputs/text_files/Frontdistances.txt"
     with open(distance_file_path, 'r') as distance_file:
         distance_text = distance_file.read()
 
 
     # Read text from Backdistances.txt
-    distance_file_path_back = "Backdistances.txt"
+    distance_file_path_back = "outputs/text_files/Backdistances.txt"
     with open(distance_file_path_back, 'r') as distance_file_back:
         distance_text_back = distance_file_back.read()
 

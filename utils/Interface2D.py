@@ -1,18 +1,16 @@
 import base64
 import json
 import matplotlib.pyplot as plt
-
 from tkinter import messagebox
 import requests
 import os
-
 import cv2
 from ultralytics import YOLO
 from PIL import Image, ImageTk
 import tkinter as tk
 import mediapipe as mp
 
-model_facial = YOLO('../resources/models/best.pt')
+model_facial = YOLO('resources/models/best.pt')
 
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.3, model_complexity=2)
@@ -82,8 +80,8 @@ class CameraFacialWindow(tk.Toplevel):
             results = model_facial(frame, save=True)
             annotated_frame = results[0].plot()
             print(results[0].plot())
-            cv2.imwrite("captured_image22.jpg", annotated_frame)
-            image = Image.open("captured_image22.jpg")
+            cv2.imwrite("outputs/images/captured_image22.jpg", annotated_frame)
+            image = Image.open("outputs/images/captured_image22.jpg")
 
             self.new_window = tk.Toplevel(self)
             self.new_window.title("Confirm image")
@@ -109,7 +107,7 @@ class CameraFacialWindow(tk.Toplevel):
     def save_image(self):
         self.new_window.destroy()
 
-        filename = "data.txt"  # Replace with the actual file name
+        filename = "outputs/text_files/data.txt"  # Replace with the actual file name
 
         data = {}  # Dictionary to store the extracted values
 
@@ -135,7 +133,7 @@ class CameraFacialWindow(tk.Toplevel):
         model = data.get("model")
 
         # Read the image file as binary data
-        with open('captured_image22.jpg', 'rb') as file:
+        with open('outputs/images/captured_image22.jpg', 'rb') as file:
             image_data = file.read()
 
         image_base64 = base64.b64encode(image_data).decode("utf-8")
@@ -170,7 +168,7 @@ class CameraFacialWindow(tk.Toplevel):
             }
 
             # Read the image file as binary data
-        with open('captured_image22.jpg', 'rb') as file:
+        with open('outputs/images/captured_image22.jpg', 'rb') as file:
             files['image'] = file.read()
 
             # Define the endpoint URL

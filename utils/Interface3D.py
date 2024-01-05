@@ -6,12 +6,9 @@ from .utils import *
 from .captureFront2d import *
 from .alldistances import *
 # from finalResult import *
-from .code1 import *
 from .captureBack2d import *
-from .backdistance import *
-from .frontdistance import *
 import time
-from .automatic_landmarks import *
+from .automaticLandmarks import *
 import os
 import open3d as o3d
 import glob
@@ -32,9 +29,20 @@ class MainWindow3D(tk.Toplevel):
         self.parent = parent
         # self.initUI()
         # self.attributes("-zoomed", True)
-        self.geometry("1400x750")
         self.title("3D Full Body Human Viewer")
+        # Get the screen width and height
+        screen_width = self.winfo_screenwidth()
+        screen_height = self.winfo_screenheight()
 
+        # Set the window size to match the screen resolution
+        self.geometry(
+            f"{screen_width}x{screen_height}+0+0")  # Adjusts the window to top-left corner and matches screen size
+        # Get the screen width and height
+        # screen_width = self.winfo_screenwidth()
+        # screen_height = self.winfo_screenheight()
+        #
+        # # Set the window size to match the screen resolution
+        # self.geometry(f"{screen_width}x{screen_height}")
         self.create_buttons()
 
         self.path = ""
@@ -558,21 +566,21 @@ class MainWindow3D(tk.Toplevel):
             print("Clean3DPLY :", self.Clean3DPLY)
             print("current_file :", self.current_file)
 
-    def SelectPoints(self):
-        if not (self.file_path):
-            messagebox.showerror("Error", "Please select a file")
-        else:
-            if not (self.Clean3DPLY):
-                messagebox.showerror("Error", "Cleaned File Doesnt Exist")
-            else:
-                # text = "Click on Antropometric Landmarks"
-                # self.guide.config(text=text)
-                self.change_image("guide_front.jpeg")
-                frontLandmarks(self.Clean3DPLY)
-                self.change_image("guide_back.jpeg")
-                backLandmarks(self.Clean3DPLY)
-                self.current_file = self.Clean3DPLY
-                self.change_image("resources/images/trans.png")
+    # def SelectPoints(self):
+    #     if not (self.file_path):
+    #         messagebox.showerror("Error", "Please select a file")
+    #     else:
+    #         if not (self.Clean3DPLY):
+    #             messagebox.showerror("Error", "Cleaned File Doesnt Exist")
+    #         else:
+    #             # text = "Click on Antropometric Landmarks"
+    #             # self.guide.config(text=text)
+    #             self.change_image("guide_front.jpeg")
+    #             frontLandmarks(self.Clean3DPLY)
+    #             self.change_image("guide_back.jpeg")
+    #             backLandmarks(self.Clean3DPLY)
+    #             self.current_file = self.Clean3DPLY
+    #             self.change_image("resources/images/trans.png")
 
     def Automatic(self):
         if not (self.file_path):

@@ -2,7 +2,7 @@ import numpy as np
 import open3d as o3d
 import copy
 import math
-#from finalResult import *
+
 
 def allDistancesFunction():
     body = o3d.io.read_point_cloud("resources/3d_models/cleanBody.ply")
@@ -278,4 +278,3 @@ def allDistancesFunction():
 
     o3d.visualization.draw_geometries([body, highlight_pnts, highlight_pnts1], window_name="Full body", width=800,
                                       height=800, left=800, top=200)
-

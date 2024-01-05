@@ -1,7 +1,7 @@
-name: dsfg
+name: fadv
 gender: male
-age: 534
-tall: 345
-weight: 325
+age: 213
+tall: 43
+weight: 1324
 dimension: 3D
 model: none
