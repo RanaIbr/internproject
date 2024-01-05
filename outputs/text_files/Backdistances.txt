@@ -1,0 +1,19 @@
+
+Back distances and Angles
+
+Between Shoulder Back: 3.49 cm
+Left Upper Arm Back: 13.04 cm
+Right Upper Arm Back: 17.81 cm
+Left Forearm Back: 10.36 cm
+Right Forearm Back: 9.36 cm
+Left Thigh Back: 29.0 cm
+Right Thigh Back: 24.85 cm
+Left Shin Back: 25.41 cm
+Right Shin Back: 17.31 cm
+Upper body segment: 54.55 cm
+Lower body segment: 40.19 cm
+Upper to lower segment ratio: 3.82
+
+Left elbow angle Back is: 133.97 
+Right elbow angle Back: 345.58
+Back Neck Angle: 99.98

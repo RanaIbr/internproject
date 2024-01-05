@@ -1,0 +1,7 @@
+name: dsfg
+gender: male
+age: 534
+tall: 345
+weight: 325
+dimension: 3D
+model: none
