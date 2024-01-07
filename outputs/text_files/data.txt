@@ -1,7 +1,7 @@
-name: ghg
+name: gsad
 gender: male
-age: 4545
-tall: 544
-weight: 4
+age: 32
+tall: 342
+weight: 234
 dimension: 3D
 model: none

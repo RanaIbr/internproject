@@ -30,6 +30,8 @@ class MainWindow3D(tk.Toplevel):
         # self.initUI()
         # self.attributes("-zoomed", True)
         self.title("3D Full Body Human Viewer")
+        icon_path = 'resources/images/logo_19.ico'
+        self.iconbitmap(icon_path)
         # Get the screen width and height
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
@@ -151,7 +153,7 @@ class MainWindow3D(tk.Toplevel):
 
 
 
-        button_export = Button(top_frame, text="Export STL", width=25, command=self.exportSTL, height=2)
+        button_export = Button(top_frame, text="Convert to STL", width=25, command=self.exportSTL, height=2)
         button_export.pack(side="top", padx=10, pady=5)
 
         button_open = Button(top_frame, text="Open STL", width=25, command=self.openSTL, height=2)
@@ -757,13 +759,12 @@ class MainWindow3D(tk.Toplevel):
             if not self.Clean3DPLY:
                 messagebox.showerror("Error", "Cleaned File Doesn't Exist")
             else:
-                filepath = filedialog.asksaveasfilename(defaultextension=".stl", filetypes=[("STL Files", "*.stl")])
-                if filepath:
-                    scene = a3d.Scene.from_file(self.current_file)
-                    scene.save("outputs/3d_models/output_3d_object_for_stl.obj")
+                filepath = "outputs/3d_models/CleanBody.stl"
+                scene = a3d.Scene.from_file(self.current_file)
+                scene.save("outputs/3d_models/output_3d_object_for_stl.obj")
 
-                    scene = a3d.Scene.from_file("outputs/3d_models/output_3d_object_for_stl.obj")
-                    scene.save(filepath)
+                scene = a3d.Scene.from_file("outputs/3d_models/output_3d_object_for_stl.obj")
+                scene.save(filepath)
 
     def ImportReport(self):
         if not self.file_path:

@@ -13,6 +13,9 @@ class MainWindow(tkinter.Window):
         self.frame = tk.Frame(self)
         self.frame.pack()
 
+        icon_path = 'resources/images/logo_19.ico'
+        self.iconbitmap(icon_path)
+
         # Saving User Info
         self.user_info_frame = tkinter.LabelFrame(self.frame, text="User Information")
         self.user_info_frame.grid(row=0, column=0, padx=20, pady=10)

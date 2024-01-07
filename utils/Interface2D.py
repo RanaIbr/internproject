@@ -24,7 +24,8 @@ class CameraFacialWindow(tk.Toplevel):
         tk.Toplevel.__init__(self, parent)
         self.parent = parent
         self.title("Camera Interface")
-
+        icon_path = 'resources/images/logo_19.ico'
+        self.iconbitmap(icon_path)
         main_frame = tk.Frame(self)
         main_frame.pack(side="right", padx=10, pady=10)
 
