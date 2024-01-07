@@ -1,0 +1,69 @@
+
+
+    <table border=1>
+   <tr>
+    <td colspan=2>Distances and angles of Back body:</td>
+  </tr>
+  <tr>
+    <td>Between Shoulder Back:</td>
+    <td>6.84 cm</td>
+  </tr>
+  <tr>
+    <td>Left Upper Arm Back:</td>
+    <td>12.63 cm</td>
+  </tr>
+  <tr>
+    <td>Right Upper Arm Back:</td>
+    <td>10.79 cm</td>
+  </tr>
+  <tr>
+    <td>Left Forearm Back:</td>
+    <td>19.36 cm</td>
+  </tr>
+  <tr>
+    <td>Right Forearm Back:</td>
+    <td>18.07 cm</td>
+  </tr>
+  <tr>
+    <td>Left Thigh Back:</td>
+    <td>25.75 cm</td>
+  </tr>
+  <tr>
+    <td>Right Thigh Back:</td>
+    <td>27.52 cm</td>
+  </tr>
+  <tr>
+    <td>Left Shin Back:</td>
+    <td>13.35 cm</td>
+  </tr>
+  <tr>
+    <td>Right Shin Back:</td>
+    <td>14.04 cm</td>
+  </tr>
+  <tr>
+    <td>Upper body segment:</td>
+    <td>106.18 cm</td>
+  </tr>
+  <tr>
+    <td>Lower body segment:</td>
+    <td>75.82 cm</td>
+  </tr>
+  <tr>
+    <td>Upper to lower segment ratio:</td>
+    <td>1.6</td>
+  </tr>
+  <tr>
+    <td>Left elbow angle Back is:</td>
+    <td>355.69</td>
+  </tr>
+  <tr>
+    <td>Right elbow angle Back is:</td>
+    <td>179.52</td>
+  </tr>
+  <tr>
+    <td>back_neck_angle is:</td>
+    <td>137.45</td>
+  </tr>
+</table>
+
+    

@@ -177,10 +177,86 @@ def allDistancesFunction():
     print(f" \n")
 
     distances = f"Distances and angles of Front body:\nBMI: {bmi:.2f} kg/m2" + "\n" + f"Between Shoulder: {dist1} cm" + "\n" + f"Left Upper Arm: {dist2} cm" + "\n" + f"Right Upper Arm: {dist3} cm" + "\n" + f"Left Forearm : {dist4} cm" + "\n" + f"Right Forearm: {dist5} cm" + "\n" + f"Left Thigh: {dist6} cm" + "\n" + f"Right Thigh: {dist7} cm" + "\n" + f"Left Shin: {dist8} cm" + "\n" + f"Right Shin: {dist9} cm" + "\n" + f"Upper body segment: {dist11} cm" + "\n" + f"Lower body segment: {dist12} cm" + "\n" + f"Upper to lower segment ratio: {ratio12}" + "\n" + f"Full Tall: {dist10} cm" + "\n" + f"Left elbow angle: {left_elbow_angle} " + "\n" + f"Right elbow angle: {right_elbow_angle}"
+    distances_html = f"""
+    
+    <table>
+  <tr>
+    <td colspan=2>Distances and angles of Front body:</td>
+  </tr>
+  <tr>
+    <td>bmi:</td>
+    <td>{bmi:.2f} kg/m2</td>
+  </tr>
+  <tr>
+    <td>Between Shoulder:</td>
+    <td>{dist1} cm</td>
+  </tr>
+  <tr>
+    <td>Left Upper Arm:</td>
+    <td>{dist2} cm</td>
+  </tr>
+  <tr>
+    <td>Right Upper Arm:</td>
+    <td>{dist3} cm</td>
+  </tr>
+  <tr>
+    <td>Left Forearm:</td>
+    <td>{dist4} cm</td>
+  </tr>
+  <tr>
+    <td>Right Forearm:</td>
+    <td>{dist5} cm</td>
+  </tr>
+  <tr>
+    <td>Left Thigh:</td>
+    <td>{dist6} cm</td>
+  </tr>
+  <tr>
+    <td>Right Thigh:</td>
+    <td>{dist7} cm</td>
+  </tr>
+  <tr>
+    <td>Left Shin:</td>
+    <td>{dist8} cm</td>
+  </tr>
+  <tr>
+    <td>Right Shin:</td>
+    <td>{dist9} cm</td>
+  </tr>
+  <tr>
+    <td>Upper body segment:</td>
+    <td>{dist11} cm</td>
+  </tr>
+  <tr>
+    <td>Lower body segment:</td>
+    <td>{dist12} cm</td>
+  </tr>
+  <tr>
+    <td>Upper to lower segment ratio:</td>
+    <td>{ratio12}</td>
+  </tr>
+  <tr>
+    <td>Left elbow angle:</td>
+    <td>{left_elbow_angle}</td>
+  </tr>
+  <tr>
+    <td>Right elbow angle:</td>
+    <td>{right_elbow_angle}</td>
+  </tr>
+  <tr>
+    <td>Full Tall:</td>
+    <td>{dist10} cm</td>
+  </tr>
+</table>
 
+
+
+    """
     with open("outputs/text_files/Frontdistances.txt", mode='w') as f:  # I add the mode='w'
         f.write("Front distances and Angles\n\n" + distances)
 
+    with open("outputs/text_files/FrontdistancesHtml.txt", mode='w') as f:  # I add the mode='w'
+        f.write(distances_html)
     # Distances and angles of Back body
 
     point_1 = pointsall1[0, :]
@@ -250,8 +326,82 @@ def allDistancesFunction():
     print(f"back_neck_angle is: {back_neck_angle}")
 
     distances = f"Between Shoulder Back: {dist1} cm" + "\n" + f"Left Upper Arm Back: {dist2} cm" + "\n" + f"Right Upper Arm Back: {dist3} cm" + "\n" + f"Left Forearm Back: {dist4} cm" + "\n" + f"Right Forearm Back: {dist5} cm" + "\n" + f"Left Thigh Back: {dist6} cm" + "\n" + f"Right Thigh Back: {dist7} cm" + "\n" + f"Left Shin Back: {dist8} cm" + "\n" + f"Right Shin Back: {dist9} cm" + "\n" + f"Upper body segment: {dist11} cm" + "\n" + f"Lower body segment: {dist12} cm" + "\n" + f"Upper to lower segment ratio: {ratio12}" + "\n" + "\n" + f"Left elbow angle Back is: {left_elbow_angle} " + "\n" + f"Right elbow angle Back: {right_elbow_angle}" + "\n" + f"Back Neck Angle: {back_neck_angle}"
+    distances_html = f"""
+
+    <table border=1>
+   <tr>
+    <td colspan=2>Distances and angles of Back body:</td>
+  </tr>
+  <tr>
+    <td>Between Shoulder Back:</td>
+    <td>{dist1} cm</td>
+  </tr>
+  <tr>
+    <td>Left Upper Arm Back:</td>
+    <td>{dist2} cm</td>
+  </tr>
+  <tr>
+    <td>Right Upper Arm Back:</td>
+    <td>{dist3} cm</td>
+  </tr>
+  <tr>
+    <td>Left Forearm Back:</td>
+    <td>{dist4} cm</td>
+  </tr>
+  <tr>
+    <td>Right Forearm Back:</td>
+    <td>{dist5} cm</td>
+  </tr>
+  <tr>
+    <td>Left Thigh Back:</td>
+    <td>{dist6} cm</td>
+  </tr>
+  <tr>
+    <td>Right Thigh Back:</td>
+    <td>{dist7} cm</td>
+  </tr>
+  <tr>
+    <td>Left Shin Back:</td>
+    <td>{dist8} cm</td>
+  </tr>
+  <tr>
+    <td>Right Shin Back:</td>
+    <td>{dist9} cm</td>
+  </tr>
+  <tr>
+    <td>Upper body segment:</td>
+    <td>{dist10} cm</td>
+  </tr>
+  <tr>
+    <td>Lower body segment:</td>
+    <td>{dist11} cm</td>
+  </tr>
+  <tr>
+    <td>Upper to lower segment ratio:</td>
+    <td>{ratio21}</td>
+  </tr>
+  <tr>
+    <td>Left elbow angle Back is:</td>
+    <td>{left_elbow_angle}</td>
+  </tr>
+  <tr>
+    <td>Right elbow angle Back is:</td>
+    <td>{right_elbow_angle}</td>
+  </tr>
+  <tr>
+    <td>back_neck_angle is:</td>
+    <td>{back_neck_angle}</td>
+  </tr>
+</table>
+
+    """
+
+
     with open("outputs/text_files/Backdistances.txt", mode='w') as f:  # I add the mode='w'
         f.write("\nBack distances and Angles\n\n" + distances)
+
+    with open("outputs/text_files/BackdistancesHtml.txt", mode='w') as f:  # I add the mode='w'
+        f.write(distances_html)
 
     # ----------------------------------------------------------------
 

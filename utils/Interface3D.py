@@ -5,7 +5,7 @@ from PIL import ImageTk, Image
 from .utils import *
 from .captureFront2d import *
 from .alldistances import *
-# from finalResult import *
+from .finalResult import *
 from .captureBack2d import *
 import time
 from .automaticLandmarks import *
@@ -126,12 +126,10 @@ class MainWindow3D(tk.Toplevel):
                                      height=2)
         button_geo_cropping.pack(side="top", padx=10, pady=5)
 
-        def finalto():
-            allDistancesFunction()
-            insert_text()
+
 
         button_landmarks_estimation = Button(top_frame, text="3D Manual Landmarks", width=25,
-                                             command=finalto, height=2)
+                                             command=self.finalto, height=2)
         button_landmarks_estimation.pack(side="top", padx=10, pady=5)
 
         button_slicing = Button(top_frame, text="Slicing", width=25, command=self.slicing, height=2)
@@ -150,21 +148,8 @@ class MainWindow3D(tk.Toplevel):
         # html_label.pack(fill="both", expand=True)
         # Function to insert text into the Text widget
 
-        def insert_text():
-            # Clear previous content
-            text_widget.config(state="normal")
-            text_widget.delete('1.0', 'end')
-            # Insert new text
-            distance_file_path = "outputs/text_files/Frontdistances.txt"
-            with open(distance_file_path, 'r') as distance_file:
-                distance_text = distance_file.read()
 
-            # Read text from Backdistances.txt
-            distance_file_path_back = "outputs/text_files/Backdistances.txt"
-            with open(distance_file_path_back, 'r') as distance_file_back:
-                distance_text_back = distance_file_back.read()
-            text_widget.insert('1.0', distance_text + "\n\n" + distance_text_back)
-            text_widget.config(state="disabled")
+
 
         button_export = Button(top_frame, text="Export STL", width=25, command=self.exportSTL, height=2)
         button_export.pack(side="top", padx=10, pady=5)
@@ -172,7 +157,7 @@ class MainWindow3D(tk.Toplevel):
         button_open = Button(top_frame, text="Open STL", width=25, command=self.openSTL, height=2)
         button_open.pack(side="top", padx=10, pady=5)
 
-        button_final = Button(top_frame, text="Final Result", width=25, command=insert_text, height=2)
+        button_final = Button(top_frame, text="Final Result", width=25, command=self.FinalReportSpot, height=2)
         button_final.pack(side="top", padx=10, pady=5)
 
         # button_import = Button(top_frame, text="Import Report", width=25, command=self.ImportReport, height=2)
@@ -185,8 +170,29 @@ class MainWindow3D(tk.Toplevel):
         button_exit.pack(side="top", padx=10, pady=5)
 
         # Create a Text widget for the right side
-        text_widget = Text(main_frame, width=40, height=30)
-        text_widget.pack(side="right", padx=10, pady=10)
+        self.text_widget = Text(main_frame, width=40, height=30)
+        self.text_widget.pack(side="right", padx=10, pady=10)
+
+    def finalto(self):
+        allDistancesFunction()
+        self.insert_text()
+    def insert_text(self):
+        print("here!!!!!!!!!!")
+        # Clear previous content
+        self.text_widget.config(state="normal")
+        self.text_widget.delete('1.0', 'end')
+        # Insert new text
+        distance_file_path = "outputs/text_files/Frontdistances.txt"
+        with open(distance_file_path, 'r') as distance_file:
+            distance_text = distance_file.read()
+        print("here!!!!!!!!!!"+"\n"+distance_text)
+
+        # Read text from Backdistances.txt
+        distance_file_path_back = "outputs/text_files/Backdistances.txt"
+        with open(distance_file_path_back, 'r') as distance_file_back:
+            distance_text_back = distance_file_back.read()
+        self.text_widget.insert('1.0', distance_text + "\n\n" + distance_text_back)
+        self.text_widget.config(state="disabled")
 
     def landmarks2D(self):
         if not (self.file_path):
@@ -274,11 +280,11 @@ class MainWindow3D(tk.Toplevel):
             array2 = np.asarray(mesh_r1.points)
             colors = np.asarray(mesh_r1.colors)
 
-            points = array2[0:6000, :]
-            colors1 = colors[0:6000, :]
+            points = array2[0:3000, :]
+            colors1 = colors[0:3000, :]
 
-            points1 = array2[6000:22000, :]
-            colors2 = colors[6000:22000, :]
+            points1 = array2[3000:22000, :]
+            colors2 = colors[3000:22000, :]
 
             points2 = array2[22000:len(array2), :]
             colors3 = colors[22000:len(array2), :]
@@ -674,6 +680,10 @@ class MainWindow3D(tk.Toplevel):
                 self.current_file = self.file_path_stl
                 self.lable.config(text="Selected file: " + self.file_path_stl)
                 self.path_stl = self.file_path_stl
+
+    def FinalReportSpot(self):
+        self.insert_text()
+        ImportReportExtra()
 
     def FinalResult(self):
         if not (self.file_path):

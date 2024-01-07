@@ -2,17 +2,19 @@ import os
 from pyhtml2pdf import converter
 from html import escape
 import aspose.threed as a3d
+# from weasyprint import HTML
+from reportlab.pdfgen import canvas
 
 
 def ImportReportExtra():
-    filename = "data.txt"  # Replace with the actual file name
+    filename = "outputs/text_files/data.txt"  # Replace with the actual file name
 
     data = {}  # Dictionary to store the extracted values
     scene = a3d.Scene.from_file("resources/3d_models/cleanBody.ply")
-    scene.save("resources/3d_models/output_3d_object_for_stl.obj")
+    scene.save("outputs/3d_models/output_3d_object_for_stl.obj")
 
-    scene = a3d.Scene.from_file("resources/3d_models/output_3d_object_for_stl.obj")
-    scene.save("CleanStl.stl")
+    scene = a3d.Scene.from_file("outputs/3d_models/output_3d_object_for_stl.obj")
+    scene.save("outputs/3d_models/CleanStl.stl")
     # Open the file in read mode
     with open(filename, "r") as file:
         # Read each line in the file
@@ -34,13 +36,13 @@ def ImportReportExtra():
     dimension = data.get("dimension")
     # Read text from Frontdistances.txt
 
-    distance_file_path = "outputs/text_files/Frontdistances.txt"
+    distance_file_path = "outputs/text_files/FrontdistancesHtml.txt"
     with open(distance_file_path, 'r') as distance_file:
         distance_text = distance_file.read()
 
 
     # Read text from Backdistances.txt
-    distance_file_path_back = "outputs/text_files/Backdistances.txt"
+    distance_file_path_back = "outputs/text_files/BackdistancesHtml.txt"
     with open(distance_file_path_back, 'r') as distance_file_back:
         distance_text_back = distance_file_back.read()
 
@@ -74,7 +76,7 @@ def ImportReportExtra():
     <body>
 
     <div class="center-image">
-        <img src="kf-new-2022.png" style="margin-top: 80px; width: 250px;height: auto;"/>
+        <img src="resources/images/logo_19.jpg" style="margin-top: 80px; width: 250px;height: auto;"/>
        
     </div>
     <div class="center-image" style="margin-top: 45px;">
@@ -100,11 +102,11 @@ def ImportReportExtra():
     </table>   
         <tr style="border: none;">
           
-            <img src="screenCleanFront.jpg" style="width:1000px;height:auto;"/>               
+            <img src="resources/images/screenCleanFront.jpg" style="width:1000px;height:auto;"/>               
           
         </tr>
         <tr style="border: none;">
-            <img src="screenCleanBack.jpg" style="width:1000px;height:auto;"/>               
+            <img src="resources/images/screenCleanBack.jpg" style="width:1000px;height:auto;"/>               
         </tr>
 
     </body>
@@ -112,14 +114,15 @@ def ImportReportExtra():
     """
 
     # Save the HTML content to a file
-    with open('results.html', 'w') as html_file:
+    with open('finalReport.html', 'w') as html_file:
         html_file.write(html_content)
     try:
-        path = os.path.abspath('results.html')
-        converter.convert(f'file:///{path}', 'sample.pdf')
+        path = os.path.abspath('finalReport.html')
+        converter.convert(f'file:///{path}', 'finalReport.pdf')
+
+        # HTML(path).write_pdf('sample.pdf')
         print("Conversion successful")
+        if os.path.exists(path):
+            os.remove(path)
     except Exception as e:
         print(f"Conversion failed: {str(e)}")
-
-
-ImportReportExtra()

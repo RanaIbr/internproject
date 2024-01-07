@@ -1,7 +1,7 @@
-name: fadv
+name: ghg
 gender: male
-age: 213
-tall: 43
-weight: 1324
+age: 4545
+tall: 544
+weight: 4
 dimension: 3D
 model: none
