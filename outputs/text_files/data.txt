@@ -1,7 +1,7 @@
-name: sdsa
+name: jj
 gender: male
-age: 432
-tall: 123
-weight: 32
+age: 67
+tall: 254
+weight: 90
 dimension: 3D
 model: none

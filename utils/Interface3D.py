@@ -91,9 +91,9 @@ class MainWindow3D(tk.Toplevel):
         self.image_label = Label(main_frame, image=self.photo)
         self.image_label.pack(side="right", padx=10, pady=10)
 
-        image_path_ = "resources/images/logo_19.jpg"  # Replace with the actual path to your image
+        image_path_ = "resources/images/kf.png"  # Replace with the actual path to your image
         image_ = Image.open(image_path_)
-        image_ = image_.resize((120, 130))
+        image_ = image_.resize((270, 130))
 
         # Create a PhotoImage object from the image and store it as an instance variable
         self.photo_ = ImageTk.PhotoImage(image_)
@@ -118,24 +118,21 @@ class MainWindow3D(tk.Toplevel):
         bottom_frame.pack(side="right", padx=10, pady=10, anchor="w")
         # Load an image
 
-        button_geo_cropping = Button(top_frame, text="Geometry Cropping", width=25, command=self.demo_3d, height=2)
+        button_geo_cropping = Button(top_frame, text="Load and body shape", width=25, command=self.demo_3d, height=2)
         button_geo_cropping.pack(side="top", padx=10, pady=5)
 
-        button_clean = Button(top_frame, text="Segmentation", width=25, command=self.clean3d, height=2)
+        button_clean = Button(top_frame, text="Geometry cropping\nand bounding box", width=25, command=self.clean3d, height=2)
         button_clean.pack(side="top", padx=10, pady=5)
 
-        button_geo_cropping = Button(top_frame, text="2D Automatic Landmarks", width=25, command=self.landmarks2D,
+        button_geo_cropping = Button(top_frame, text="3D facial marks", width=25, command=self.landmarks2D,
                                      height=2)
         button_geo_cropping.pack(side="top", padx=10, pady=5)
 
 
 
-        button_landmarks_estimation = Button(top_frame, text="3D Manual Landmarks", width=25,
+        button_landmarks_estimation = Button(top_frame, text="3d body landmarks", width=25,
                                              command=self.finalto, height=2)
         button_landmarks_estimation.pack(side="top", padx=10, pady=5)
-
-        button_slicing = Button(top_frame, text="Slicing", width=25, command=self.slicing, height=2)
-        button_slicing.pack(side="top", padx=10, pady=5)
 
         self.label_logo = Label(top_frame)
         self.label_logo.pack(side="top", padx=10, pady=5)

@@ -96,14 +96,17 @@ class MainWindow(tkinter.Window):
         self.dim_var2.set(7)  # Set the initial value to 5 (2D)
 
         accept_var = tkinter.StringVar(value="landmarks")
-        self.check2DLandmarks = tkinter.Radiobutton(self.terms_frame_models, text="landmarks",
+        self.check2DLandmarks = tkinter.Radiobutton(self.terms_frame_models, text="landmarks        ",
                                                     variable=self.dim_var2, value=7)
 
-        self.check2DFacial = tkinter.Radiobutton(self.terms_frame_models, text="facial       ",
+        self.check2DFacial = tkinter.Radiobutton(self.terms_frame_models, text="facial                ",
                                                  variable=self.dim_var2, value=8)
+        self.check3DMesh = tkinter.Radiobutton(self.terms_frame_models, text="3d mesh facial ",
+                                                 variable=self.dim_var2, value=9)
 
         self.check2DLandmarks.grid(row=0, column=0)
         self.check2DFacial.grid(row=1, column=0)
+        self.check3DMesh.grid(row=2, column=0)
 
         # Button
         self.button = tkinter.Button(self.frame, text="Start", command=self.start)
