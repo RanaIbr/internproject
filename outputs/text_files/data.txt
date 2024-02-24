@@ -1,7 +1,7 @@
-name: gsad
+name: sdsa
 gender: male
-age: 32
-tall: 342
-weight: 234
+age: 432
+tall: 123
+weight: 32
 dimension: 3D
 model: none
