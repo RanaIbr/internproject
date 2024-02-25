@@ -5,7 +5,7 @@ import math
 
 
 def allDistancesFunction():
-    body = o3d.io.read_point_cloud("resources/3d_models/cleanBody.ply")
+    body = o3d.io.read_point_cloud("outputs/3d_models/clean.ply")
 
     # back body display
     mesh_f = copy.deepcopy(body)

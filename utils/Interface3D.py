@@ -131,7 +131,9 @@ class MainWindow3D(tk.Toplevel):
         button_clean = Button(top_frame, text="Geometry cropping\nand bounding box", width=25,
                               command=self.geometryCroppingBoundingBox, height=2)
         button_clean.pack(side="top", padx=10, pady=5)
-
+        button_landmarks_manual = Button(top_frame, text="3D Manual Landmarks", width=25,
+                                             command=self.finalto, height=2)
+        button_landmarks_manual.pack(side="top", padx=10, pady=5)
         button_geo_cropping = Button(top_frame, text="3D facial marks", width=25, command=self.facialMarks,
                                      height=2)
         button_geo_cropping.pack(side="top", padx=10, pady=5)

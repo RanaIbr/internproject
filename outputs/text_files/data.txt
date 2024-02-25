@@ -1,7 +1,7 @@
-name: das
+name: dh
 gender: male
-age: 21
+age: 765
 tall: 34
-weight: 136
+weight: 74
 dimension: 3D
 model: none

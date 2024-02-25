@@ -10,7 +10,7 @@ def ImportReportExtra():
     filename = "outputs/text_files/data.txt"  # Replace with the actual file name
 
     data = {}  # Dictionary to store the extracted values
-    scene = a3d.Scene.from_file("resources/3d_models/cleanBody.ply")
+    scene = a3d.Scene.from_file("outputs/3d_models/clean.ply")
     scene.save("outputs/3d_models/output_3d_object_for_stl.obj")
 
     scene = a3d.Scene.from_file("outputs/3d_models/output_3d_object_for_stl.obj")
@@ -76,7 +76,7 @@ def ImportReportExtra():
     <body>
 
     <div class="center-image">
-        <img src="resources/images/logo_19.jpg" style="margin-top: 80px; width: 250px;height: auto;"/>
+        <img src="resources/images/kf.png" style="margin-top: 80px; width: 250px;height: auto;"/>
        
     </div>
     <div class="center-image" style="margin-top: 45px;">
@@ -109,11 +109,6 @@ def ImportReportExtra():
             <img src="outputs/images/annotated_image.jpg" style="width:1000px;height:auto;"/>               
         </tr>
 
-        <tr style="border: none;">
-          
-            <img src="outputs/images/screenCleanFront.jpg" style="width:1000px;height:auto;"/>               
-          
-        </tr>
 
     </body>
 </html>
