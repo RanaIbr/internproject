@@ -1,7 +1,7 @@
-name: jj
+name: das
 gender: male
-age: 67
-tall: 254
-weight: 90
+age: 21
+tall: 34
+weight: 136
 dimension: 3D
 model: none

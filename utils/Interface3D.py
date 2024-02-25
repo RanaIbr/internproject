@@ -9,6 +9,12 @@ from .finalResult import *
 from .captureBack2d import *
 import time
 from .automaticLandmarks import *
+from .loadAndBodyShape import *
+from .meshFace3d import *
+from .geometryCroppingAndBoundingBox import *
+from .bodyLandmarks3d import *
+from .facialMarks3d import *
+
 import os
 import open3d as o3d
 import glob
@@ -30,7 +36,7 @@ class MainWindow3D(tk.Toplevel):
         # self.initUI()
         # self.attributes("-zoomed", True)
         self.title("3D Full Body Human Viewer")
-        icon_path = 'resources/images/logo_19.ico'
+        icon_path = 'resources/images/favicon.ico'
         self.iconbitmap(icon_path)
         # Get the screen width and height
         screen_width = self.winfo_screenwidth()
@@ -64,8 +70,8 @@ class MainWindow3D(tk.Toplevel):
         self.current_file = None
         self.Clean3DPLY = None
         # Check if file exists
-        if os.path.isfile('resources/3d_models/cleanBody.ply'):
-            self.Clean3DPLY = 'resources/3d_models/cleanBody.ply'
+        if os.path.isfile('outputs/3d_models/clean.ply'):
+            self.Clean3DPLY = 'outputs/3d_models/clean.ply'
 
         # Create the main frame
         main_frame = Frame(self)
@@ -118,17 +124,17 @@ class MainWindow3D(tk.Toplevel):
         bottom_frame.pack(side="right", padx=10, pady=10, anchor="w")
         # Load an image
 
-        button_geo_cropping = Button(top_frame, text="Load and body shape", width=25, command=self.demo_3d, height=2)
-        button_geo_cropping.pack(side="top", padx=10, pady=5)
-
-        button_clean = Button(top_frame, text="Geometry cropping\nand bounding box", width=25, command=self.clean3d, height=2)
-        button_clean.pack(side="top", padx=10, pady=5)
-
-        button_geo_cropping = Button(top_frame, text="3D facial marks", width=25, command=self.landmarks2D,
+        button_geo_cropping = Button(top_frame, text="Load and body shape", width=25, command=self.loadBodyShape,
                                      height=2)
         button_geo_cropping.pack(side="top", padx=10, pady=5)
 
+        button_clean = Button(top_frame, text="Geometry cropping\nand bounding box", width=25,
+                              command=self.geometryCroppingBoundingBox, height=2)
+        button_clean.pack(side="top", padx=10, pady=5)
 
+        button_geo_cropping = Button(top_frame, text="3D facial marks", width=25, command=self.facialMarks,
+                                     height=2)
+        button_geo_cropping.pack(side="top", padx=10, pady=5)
 
         button_landmarks_estimation = Button(top_frame, text="3d body landmarks", width=25,
                                              command=self.finalto, height=2)
@@ -146,9 +152,6 @@ class MainWindow3D(tk.Toplevel):
         # html_label = HTMLLabel(top_frame, html=html_content)
         # html_label.pack(fill="both", expand=True)
         # Function to insert text into the Text widget
-
-
-
 
         button_export = Button(top_frame, text="Convert to STL", width=25, command=self.exportSTL, height=2)
         button_export.pack(side="top", padx=10, pady=5)
@@ -172,9 +175,31 @@ class MainWindow3D(tk.Toplevel):
         self.text_widget = Text(main_frame, width=40, height=30)
         self.text_widget.pack(side="right", padx=10, pady=10)
 
+    def facialMarks(self):
+        if not self.file_path:
+            messagebox.showerror("Error", "Please select a file")
+        else:
+            # Load the point cloud data from the selected file
+            facialMarks3d(self.file_path)
+
+    def loadBodyShape(self):
+        if not self.file_path:
+            messagebox.showerror("Error", "Please select a file")
+        else:
+            # Load the point cloud data from the selected file
+            loadAndShape(self.file_path)
+
+    def geometryCroppingBoundingBox(self):
+        if not self.file_path:
+            messagebox.showerror("Error", "Please select a file")
+        else:
+            # Load the point cloud data from the selected file
+            geometryCroppingAndBoundingBox()
+
     def finalto(self):
         allDistancesFunction()
         self.insert_text()
+
     def insert_text(self):
         print("here!!!!!!!!!!")
         # Clear previous content
@@ -184,7 +209,7 @@ class MainWindow3D(tk.Toplevel):
         distance_file_path = "outputs/text_files/Frontdistances.txt"
         with open(distance_file_path, 'r') as distance_file:
             distance_text = distance_file.read()
-        print("here!!!!!!!!!!"+"\n"+distance_text)
+        print("here!!!!!!!!!!" + "\n" + distance_text)
 
         # Read text from Backdistances.txt
         distance_file_path_back = "outputs/text_files/Backdistances.txt"
@@ -288,7 +313,7 @@ class MainWindow3D(tk.Toplevel):
             points2 = array2[22000:len(array2), :]
             colors3 = colors[22000:len(array2), :]
 
-            print("hon please : ",len(array2))
+            print("hon please : ", len(array2))
             with open("outputs/text_files/head.txt", mode='w') as f:
                 for i in range(len(points)):
                     f.write("%f    " % float(points[i][0].item()))

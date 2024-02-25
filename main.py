@@ -13,7 +13,7 @@ class MainWindow(tkinter.Window):
         self.frame = tk.Frame(self)
         self.frame.pack()
 
-        icon_path = 'resources/images/logo_19.ico'
+        icon_path = 'resources/images/favicon.ico'
         self.iconbitmap(icon_path)
 
         # Saving User Info
@@ -138,7 +138,8 @@ class MainWindow(tkinter.Window):
                 model = "landmarks"
             if self.dim_var2.get() == 8:
                 model = "facial"
-
+            if self.dim_var2.get() == 9:
+                model = "meshFace3d"
         elif self.dim_var.get() == 6:
             dimension = "3D"
 
@@ -168,6 +169,8 @@ class MainWindow(tkinter.Window):
                     f.write(f"{key}: {value}\n")
             if self.dim_var.get() == 5:
                 if self.dim_var2.get() == 7:
+                    self.open_camera()
+                if self.dim_var2.get() == 9:
                     self.open_camera()
                 else:
                     self.open_camera_facial()

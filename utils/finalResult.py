@@ -102,11 +102,17 @@ def ImportReportExtra():
     </table>   
         <tr style="border: none;">
           
-            <img src="resources/images/screenCleanFront.jpg" style="width:1000px;height:auto;"/>               
+            <img src="outputs/images/image-front.png" style="width:1000px;height:auto;"/>               
           
         </tr>
         <tr style="border: none;">
-            <img src="resources/images/screenCleanBack.jpg" style="width:1000px;height:auto;"/>               
+            <img src="outputs/images/annotated_image.jpg" style="width:1000px;height:auto;"/>               
+        </tr>
+
+        <tr style="border: none;">
+          
+            <img src="outputs/images/screenCleanFront.jpg" style="width:1000px;height:auto;"/>               
+          
         </tr>
 
     </body>

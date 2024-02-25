@@ -286,8 +286,8 @@ class CameraWindow(tk.Toplevel):
                     connection_drawing_spec=mp_drawing.DrawingSpec(color=landmark_color, thickness=2)
                 )
 
-            cv2.imwrite("test.jpg", frame)
-            image = Image.open("test.jpg")
+            cv2.imwrite("outputs/images/test.jpg", frame)
+            image = Image.open("outputs/images/test.jpg")
 
             self.new_window = tk.Toplevel(self)
             self.new_window.title("Confirm image")
@@ -342,11 +342,11 @@ class CameraWindow(tk.Toplevel):
     def save_image(self):
         self.new_window.destroy()
         # model.predict("test.jpg", save=True, imgsz=320, conf=0.5)
-        image = cv2.imread('test.jpg')
+        image = cv2.imread('outputs/images/test.jpg')
 
         height, width, _ = image.shape
 
-        image = cv2.imread('test.jpg')
+        image = cv2.imread('outputs/images/test.jpg')
 
         display = False
         output_image = image.copy()
@@ -390,7 +390,7 @@ class CameraWindow(tk.Toplevel):
         model = data.get("model")
 
         # Read the image file as binary data
-        with open('test.jpg', 'rb') as file:
+        with open('outputs/images/test.jpg', 'rb') as file:
             image_data = file.read()
 
         image_base64 = base64.b64encode(image_data).decode("utf-8")
@@ -425,7 +425,7 @@ class CameraWindow(tk.Toplevel):
             }
 
             # Read the image file as binary data
-        with open('test.jpg', 'rb') as file:
+        with open('outputs/images/test.jpg', 'rb') as file:
             files['image'] = file.read()
 
             # Define the endpoint URL
@@ -452,7 +452,7 @@ class CameraWindow(tk.Toplevel):
             print("Response content:", response.content)
 
     def delete_image(self):
-        os.remove("test.jpg")
+        os.remove("outputs/images/test.jpg")
         self.new_window.destroy()
 
     def cancel_window(self):
