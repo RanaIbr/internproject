@@ -2,18 +2,18 @@ Front distances and Angles
 
 Distances and angles of Front body:
 BMI: 481.86 kg/m2
-Between Shoulder: 28.74 cm
-Left Upper Arm: 28.48 cm
-Right Upper Arm: 17.35 cm
-Left Forearm : 14.76 cm
-Right Forearm: 14.27 cm
-Left Thigh: 20.66 cm
-Right Thigh: 21.06 cm
-Left Shin: 7.03 cm
-Right Shin: 9.58 cm
-Upper body segment: 34.62 cm
-Lower body segment: 17.43 cm
-Upper to lower segment ratio: 1.99
+Between Shoulder: 10.1 cm
+Left Upper Arm: 14.48 cm
+Right Upper Arm: 19.01 cm
+Left Forearm : 30.52 cm
+Right Forearm: 24.74 cm
+Left Thigh: 60.87 cm
+Right Thigh: 60.67 cm
+Left Shin: 102.01 cm
+Right Shin: 125.23 cm
+Upper body segment: 69.02 cm
+Lower body segment: 53.48 cm
+Upper to lower segment ratio: 1.29
 Full Tall: 42.0 cm
-Left elbow angle: 193.22 
-Right elbow angle: 189.98
+Left elbow angle: 359.09 
+Right elbow angle: 0.86

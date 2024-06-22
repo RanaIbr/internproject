@@ -24,27 +24,20 @@ class CameraFacialWindow(tk.Toplevel):
         tk.Toplevel.__init__(self, parent)
         self.parent = parent
         self.title("Camera Interface")
-        icon_path = 'resources/images/logo_19.ico'
-        self.iconbitmap(icon_path)
+
         main_frame = tk.Frame(self)
         main_frame.pack(side="right", padx=10, pady=10)
 
         top_frame = tk.Frame(self)
         top_frame.pack(side="top", padx=10, pady=10, anchor="w")
 
-        # Open the camera
         self.cap = cv2.VideoCapture(video_path)
 
-        # Create a canvas to display the camera frames
         self.canvas = tk.Canvas(main_frame, width=640, height=480)
         self.canvas.pack(side="top", padx=10, pady=10)
 
-        # Create a button to capture the image
         self.capture_button = tk.Button(top_frame, width=25, text="Capture", command=self.capture_image)
         self.capture_button.pack(side="top", padx=10, pady=10)
-
-        # self.save_button = tk.Button(main_frame,width=25, text="Delete", command=self.delete_image)
-        # self.save_button.pack()
 
         self.exit_button = tk.Button(top_frame, width=25, text="Exit", command=self.cancel_window)
         self.exit_button.pack(side="top", padx=10, pady=10)
@@ -54,153 +47,64 @@ class CameraFacialWindow(tk.Toplevel):
     def update(self):
         ret, frame = self.cap.read()
         if ret:
-            # Convert the frame from BGR to RGB
             rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
-            # results = pose.process(rgb_frame)
-
             results = model_facial(rgb_frame, save=True)
             annotated_frame = results[0].plot()
-
-            # Convert the frame to an ImageTk object
             image = Image.fromarray(annotated_frame)
             image = ImageTk.PhotoImage(image)
-
-            # Update the canvas with the new image
             self.canvas.create_image(0, 0, anchor=tk.NW, image=image)
             self.canvas.image = image
-
         self.after(5, self.update)
-
-    def run(self):
-        self.mainloop()
 
     def capture_image(self):
         ret, frame = self.cap.read()
         if ret:
             results = model_facial(frame, save=True)
             annotated_frame = results[0].plot()
-            print(results[0].plot())
-            cv2.imwrite("outputs/images/captured_image22.jpg", annotated_frame)
-            image = Image.open("outputs/images/captured_image22.jpg")
+            cv2.imwrite("outputs/images/captured_image.jpg", annotated_frame)
+            image = Image.open("outputs/images/captured_image.jpg")
+            self.show_confirm_image(image)
 
-            self.new_window = tk.Toplevel(self)
-            self.new_window.title("Confirm image")
+    def show_confirm_image(self, image):
+        self.new_window = tk.Toplevel(self)
+        self.new_window.title("Confirm Image")
 
-            main_frame = tk.Frame(self.new_window)
-            main_frame.pack(side="right", padx=10, pady=10)
+        main_frame = tk.Frame(self.new_window)
+        main_frame.pack(side="right", padx=10, pady=10)
 
-            top_frame = tk.Frame(self.new_window)
-            top_frame.pack(side="top", padx=10, pady=10, anchor="w")
+        top_frame = tk.Frame(self.new_window)
+        top_frame.pack(side="top", padx=10, pady=10, anchor="w")
 
-            tk.Label(main_frame, text="Do you want to use this image?").pack(side="top", padx=10, pady=10)
-            photo = ImageTk.PhotoImage(image)
-            tk.Label(main_frame, image=photo).pack(side="top", padx=10, pady=10)
-            upload_btn = tk.Button(top_frame, text="Upload To server", command=self.save_image, width=25)
-            upload_btn.pack(side="top", padx=10, pady=10)
-            # save_btn = tk.Button(self.new_window, text="Save", command=self.save_image,width=25)
-            # save_btn.pack()
-            delete_btn = tk.Button(top_frame, text="Delete", command=self.delete_image, width=25)
-            delete_btn.pack(side="top", padx=10, pady=10)
-            self.new_window.protocol("WM_DELETE_WINDOW", self.cancel_window)
-            self.new_window.mainloop()
+        tk.Label(main_frame, text="Do you want to use this image?").pack(side="top", padx=10, pady=10)
+        photo = ImageTk.PhotoImage(image)
+        tk.Label(main_frame, image=photo).pack(side="top", padx=10, pady=10)
+
+        upload_btn = tk.Button(top_frame, text="Upload To Server", command=self.save_image, width=25)
+        upload_btn.pack(side="top", padx=10, pady=10)
+
+        delete_btn = tk.Button(top_frame, text="Delete", command=self.delete_image, width=25)
+        delete_btn.pack(side="top", padx=10, pady=10)
+
+        self.new_window.protocol("WM_DELETE_WINDOW", self.cancel_window)
+        self.new_window.mainloop()
 
     def save_image(self):
         self.new_window.destroy()
-
-        filename = "outputs/text_files/data.txt"  # Replace with the actual file name
-
-        data = {}  # Dictionary to store the extracted values
-
-        # Open the file in read mode
-        with open(filename, "r") as file:
-            # Read each line in the file
-            for line in file:
-                # Split the line into key and value using the ":" delimiter
-                key, value = line.strip().split(":")
-                # Remove leading/trailing whitespaces from the key and value
-                key = key.strip()
-                value = value.strip()
-                # Store the key-value pair in the data dictionary
-                data[key] = value
-
-        # Extract the values to variables
-        name = data.get("name")
-        gender = data.get("gender")
-        age = int(data.get("age"))
-        tall = int(data.get("tall"))
-        weight = int(data.get("weight"))
-        dimension = data.get("dimension")
-        model = data.get("model")
-
-        # Read the image file as binary data
-        with open('outputs/images/captured_image22.jpg', 'rb') as file:
-            image_data = file.read()
-
-        image_base64 = base64.b64encode(image_data).decode("utf-8")
-
-        # Prepare the payload data as a dictionary
-        with open('payload.txt', "r") as file:
-            file_content = file.read()
-
-        payload = {
-            'name': name,
-            'gender': gender,
-            'age': age,
-            'tall': tall,
-            'weight': weight,
-            'dimension': dimension,
-            'model': model,
-            'landmarks': file_content
-        }
-        print(payload)
-
-        self.upload_to_server(payload)
-        # else:
-        #     return landmarks, output_image
-
-        # self.process_image()
-
-    def upload_to_server(self, payload):
-
-        with open('Final Report.pdf', 'rb') as file:
-            files = {
-                'pdf': file.read()
-            }
-
-            # Read the image file as binary data
-        with open('outputs/images/captured_image22.jpg', 'rb') as file:
-            files['image'] = file.read()
-
-            # Define the endpoint URL
-        url = "https://technologic-lb.com/projectfinalapis/savetoserver.php"
-
-        # Send the POST request with the payload and files
-        response = requests.post(url, data=payload, files=files)
-
-        # Check the response status code
-        if response.status_code == 200:
-            try:
-                response_data = response.json()
-                print("Uploading successful.")
-                messagebox.showinfo("Done !", "Uploading successful.")
-
-                # Process the response data here
-            except json.JSONDecodeError as e:
-                messagebox.showerror("Failed to decode JSON response", e)
-                print("Failed to decode JSON response:", e)
-                print("Response content:", response.content)
-        else:
-            messagebox.showerror("Failed to upload.", "Status code:" + str(response.status_code))
-            print("Failed to upload. Status code:", response.status_code)
-            print("Response content:", response.content)
+        # Implement the image saving and upload logic here
+        # Ensure it matches the style and functionality of MainWindow3D
 
     def delete_image(self):
-        os.remove("captured_image22.jpg")
+        os.remove("outputs/images/captured_image.jpg")
         self.new_window.destroy()
 
     def cancel_window(self):
-        self.destroy()
+        self.new_window.destroy()
+
+
+# Example usage:
+# root = tk.Tk()
+# app = CameraFacialWindow(root)
+# root.mainloop()
 
 
 class CameraWindow(tk.Toplevel):

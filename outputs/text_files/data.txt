@@ -1,7 +1,7 @@
-name: dh
+name: s
 gender: male
-age: 765
-tall: 34
-weight: 74
+age: 3333
+tall: 3
+weight: 33
 dimension: 3D
 model: none

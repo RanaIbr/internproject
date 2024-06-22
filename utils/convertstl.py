@@ -2,10 +2,9 @@ import stl
 from stl import mesh
 import vtkplotlib as vpl
 import open3d as o3d
-from vtkmodules import*
+from vtkmodules import *
 import copy
 import numpy as np
-
 import aspose.threed as a3d
 
 body = o3d.io.read_point_cloud("Clean body.ply")

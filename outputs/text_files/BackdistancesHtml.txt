@@ -6,63 +6,63 @@
   </tr>
   <tr>
     <td>Between Shoulder Back:</td>
-    <td>5.49 cm</td>
+    <td>8.68 cm</td>
   </tr>
   <tr>
     <td>Left Upper Arm Back:</td>
-    <td>8.9 cm</td>
+    <td>11.23 cm</td>
   </tr>
   <tr>
     <td>Right Upper Arm Back:</td>
-    <td>10.83 cm</td>
+    <td>11.59 cm</td>
   </tr>
   <tr>
     <td>Left Forearm Back:</td>
-    <td>16.02 cm</td>
+    <td>15.91 cm</td>
   </tr>
   <tr>
     <td>Right Forearm Back:</td>
-    <td>13.33 cm</td>
+    <td>18.92 cm</td>
   </tr>
   <tr>
     <td>Left Thigh Back:</td>
-    <td>8.24 cm</td>
+    <td>19.59 cm</td>
   </tr>
   <tr>
     <td>Right Thigh Back:</td>
-    <td>14.69 cm</td>
+    <td>21.79 cm</td>
   </tr>
   <tr>
     <td>Left Shin Back:</td>
-    <td>11.83 cm</td>
+    <td>24.79 cm</td>
   </tr>
   <tr>
     <td>Right Shin Back:</td>
-    <td>5.81 cm</td>
+    <td>46.04 cm</td>
   </tr>
   <tr>
     <td>Upper body segment:</td>
-    <td>46.09 cm</td>
+    <td>55.43 cm</td>
   </tr>
   <tr>
     <td>Lower body segment:</td>
-    <td>17.39 cm</td>
+    <td>52.01 cm</td>
   </tr>
   <tr>
     <td>Upper to lower segment ratio:</td>
-    <td>1.99</td>
+    <td>1.29</td>
   </tr>
   <tr>
     <td>Left elbow angle Back is:</td>
-    <td>157.45</td>
+    <td>342.55</td>
   </tr>
   <tr>
     <td>Right elbow angle Back is:</td>
-    <td>208.07</td>
+    <td>345.28</td>
   </tr>
   <tr>
     <td>back_neck_angle is:</td>
-    <td>181.91</td>
+    <td>168.31</td>
   </tr>
 </table>
 
