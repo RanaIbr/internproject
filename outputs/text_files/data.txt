@@ -1,7 +1,7 @@
-name: s
-gender: male
-age: 3333
-tall: 3
-weight: 33
+name: gg
+gender: female
+age: 44
+tall: 44
+weight: 44
 dimension: 3D
 model: none
