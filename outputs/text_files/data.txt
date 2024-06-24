@@ -1,7 +1,0 @@
-name: gg
-gender: female
-age: 44
-tall: 44
-weight: 44
-dimension: 3D
-model: none
